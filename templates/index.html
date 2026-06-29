@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee Directory</title>
+</head>
+
+<body>
+
+    <h1>Employee Directory</h1>
+
+    <h2>Add Employee</h2>
+
+    <form action="/add" method="POST">
+
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Department:</label>
+        <input type="text" name="department" required>
+
+        <br><br>
+
+        <button type="submit">Add Employee</button>
+
+    </form>
+
+    <br><br>
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.department }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+<hr>
+
+<h3>Server Information</h3>
+
+<p><b>Hostname:</b> {{ hostname }}</p>
+
+<p><b>Current Time:</b> {{ current_time }}</p>
+
+</body>
+
+</html>
