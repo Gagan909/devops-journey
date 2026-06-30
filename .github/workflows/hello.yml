@@ -1,4 +1,4 @@
-name: My First Workflow
+name: Build Docker Image
 
 on:
   push:
@@ -6,15 +6,16 @@ on:
       - main
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello Gagan! Your first GitHub Action is running."
 
-      - name: Show Current Directory
-        run: pwd
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: List Files
+      - name: Show Files
         run: ls -la
+
+      - name: Build Docker Image
+        run: docker build -t employee-directory:test .
