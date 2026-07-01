@@ -9,6 +9,7 @@ env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: employee-directory
   CONTAINER_NAME: employee-app
+  ECS_TASK_FAMILY: employee-register
 
 jobs:
   deploy:
@@ -50,7 +51,7 @@ jobs:
       - name: Download Current Task Definition
         run: |
           aws ecs describe-task-definition \
-            --task-definition ${{ secrets.ECS_TASK_FAMILY }} \
+            --task-definition ${{ env.ECS_TASK_FAMILY }} \
             --query taskDefinition > task-definition.json
 
       - name: Remove AWS Managed Fields
